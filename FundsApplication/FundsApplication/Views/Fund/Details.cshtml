@@ -1,0 +1,36 @@
+﻿@model Tuple<IEnumerable<FundsApplication.Models.Value>,string,string>
+@{
+    ViewBag.Title = "Details";
+}
+
+<br/>
+<center>
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Name: @Model.Item2 </th>
+            <th>Description: @Model.Item3</th>
+        </tr>
+    </table>
+
+    <h2>Details</h2>
+
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Date</th>
+            <th>Value</th>
+        </tr>
+        @if (Model.Item1 != null)
+        {
+            foreach (var d in Model.Item1)
+            {
+
+
+                <tr>
+                    <td>@d.Date</td>
+                    <td>@d.FundValue</td>
+                </tr>
+
+            }
+        }
+    </table>
+ </center>

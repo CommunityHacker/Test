@@ -1,0 +1,5 @@
+﻿SELECT * From Fund INNER JOIN  Value ON Fund.Id = Value.FundId
+WHERE CONVERT(NVARCHAR(MAX), Name) = 'Gym'
+ORDER BY Value.Date ASC OFFSET 5 ROWS
+FETCH NEXT 3 ROW ONLY ;
+

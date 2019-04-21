@@ -1,0 +1,62 @@
+﻿@model Tuple<IEnumerable<FundsApplication.Models.Fund>, int[]>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@using (Html.BeginForm("Index", "Fund", FormMethod.Post))
+{
+    <center>
+        
+        <p><font size="18">Founds</font></p>
+    </center>
+
+    <center>
+        @Html.TextBox("fundName", "", new { placeholder = "Enter Fund Name..." })
+
+
+        page:
+        
+        @Html.DropDownList("selectedPage", (SelectList)ViewBag.PageNums)
+        <br />
+        <input type="submit" value="Search" />
+        
+
+
+
+    </center>
+    <br /><br /><br /><hr/>
+
+}
+
+Rows: @Model.Item2[0]   Pages: @Model.Item2[1]
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Value</th>
+
+    </tr>
+    @if (Model.Item1 != null)
+    {
+        foreach (var d in Model.Item1)
+        {
+
+
+            <tr>
+                <td>@d.Name</td>
+                <td>@d.Description</td>
+                <td>@d.LatestValue</td>
+                <td>@Html.ActionLink("Details", "Details", new { id = d.Id, name = d.Name, description = d.Description }) </td>
+            </tr>
+
+        }
+    }
+</table>
+
+
+
+
+
+
+
